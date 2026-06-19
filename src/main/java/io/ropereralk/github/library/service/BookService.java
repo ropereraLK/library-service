@@ -2,7 +2,7 @@ package io.ropereralk.github.library.service;
 
 import io.ropereralk.github.library.dto.request.BookRequest;
 import io.ropereralk.github.library.dto.response.BookResponse;
-import io.ropereralk.github.library.enumuration.BookCopyStatus;
+import io.ropereralk.github.library.enumeration.BookCopyStatus;
 import io.ropereralk.github.library.exception.DuplicateBookException;
 import io.ropereralk.github.library.model.Book;
 import io.ropereralk.github.library.model.BookCopy;
@@ -36,6 +36,7 @@ public class BookService {
                         .title(bookRequest.title())
                         .author(bookRequest.author())
                         .isbn(bookRequest.isbn())
+                        .noOfCopies(bookRequest.noOfCopies())
                         .build()
         );
 

@@ -1,4 +1,4 @@
-package io.ropereralk.github.library.enumuration;
+package io.ropereralk.github.library.enumeration;
 
 public enum BorrowStatus {
     ACTIVE,

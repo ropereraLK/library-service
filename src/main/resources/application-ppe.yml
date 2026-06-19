@@ -1,5 +1,4 @@
 #In a production deployment, a centralized secret management solution such as AWS Secrets Manager is preferred.
-
 spring:
   datasource:
     url: ${URL}

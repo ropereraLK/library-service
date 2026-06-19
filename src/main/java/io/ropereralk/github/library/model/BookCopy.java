@@ -1,6 +1,6 @@
 package io.ropereralk.github.library.model;
 
-import io.ropereralk.github.library.enumuration.BookCopyStatus;
+import io.ropereralk.github.library.enumeration.BookCopyStatus;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -36,7 +36,6 @@ public class BookCopy {
     @Column(nullable = false)
     private Integer copyNumber;
 
-    @NotBlank
     @Column(nullable = false)
     @Enumerated
     private BookCopyStatus status;

@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  library-service:
+    build: .
+    container_name: library-service
+
+    ports:
+      - "8080:8080"
+
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      URL: jdbc:postgresql://postgres:5432/${DB_NAME}
+      USERNAME: ${DB_USERNAME}
+      PASSWORD: ${DB_PASSWORD}
+    depends_on:
+      - postgres

@@ -1,7 +1,6 @@
 package io.ropereralk.github.library.repository;
 
-import io.ropereralk.github.library.enumuration.BorrowStatus;
-import io.ropereralk.github.library.model.BookCopy;
+import io.ropereralk.github.library.enumeration.BorrowStatus;
 import io.ropereralk.github.library.model.BorrowRecord;
 import jakarta.persistence.LockModeType;
 import org.springframework.data.jpa.repository.JpaRepository;

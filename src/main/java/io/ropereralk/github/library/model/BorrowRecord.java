@@ -1,6 +1,6 @@
 package io.ropereralk.github.library.model;
 
-import io.ropereralk.github.library.enumuration.BorrowStatus;
+import io.ropereralk.github.library.enumeration.BorrowStatus;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
@@ -46,6 +46,8 @@ public class BorrowRecord {
     //TODO: Logic to be implemented
     private Instant returnedDate;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private BorrowStatus status;
 
     @Version
@@ -58,6 +60,5 @@ public class BorrowRecord {
     @UpdateTimestamp
     @Column(nullable = false)
     private Instant updatedAt;
-
 
 }

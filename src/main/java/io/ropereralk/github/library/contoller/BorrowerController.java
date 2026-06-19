@@ -19,22 +19,39 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/v1/borrowers")
-@Tag(name = "Borrower APIs")
+@Tag(
+        name = "Borrowers",
+        description = "Operations related to library members and borrowers"
+)
 public class BorrowerController {
 
     private final BorrowerService borrowerService;
 
     @PostMapping
-    @Operation(summary = "Create a borrower")
+    @Operation(
+            summary = "Create a borrower",
+            description = "Registers a new borrower in the library system."
+    )
     @ApiResponses({
-            @ApiResponse(responseCode = "201", description = "Borrower created"),
-            @ApiResponse(responseCode = "400", description = "Invalid request")
+            @ApiResponse(
+                    responseCode = "201",
+                    description = "Borrower created successfully"
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Validation failed"
+            ),
+            @ApiResponse(
+                    responseCode = "409",
+                    description = "A borrower with the same email already exists"
+            )
     })
-    public ResponseEntity<BorrowerResponse> createBorrower(@Valid @RequestBody BorrowerRequest borrowerRequest) {
+    public ResponseEntity<BorrowerResponse> createBorrower(
+            @Valid @RequestBody BorrowerRequest borrowerRequest) {
 
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(borrowerService.createBorrower(borrowerRequest));
-
     }
+
 }
