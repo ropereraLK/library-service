@@ -36,18 +36,17 @@ public class BookService {
                         .title(bookRequest.title())
                         .author(bookRequest.author())
                         .isbn(bookRequest.isbn())
-//                        .noOfCopies(bookRequest.noOfCopies())
                         .build()
         );
 
 
         bookCopyService.createBookCopies(createCopies(savedBook, bookRequest.noOfCopies()));
 
-        return new BookResponse(
-                savedBook.getTitle(),
-                savedBook.getAuthor(),
-                savedBook.getIsbn()
-        );
+        return BookResponse.builder()
+                .title(savedBook.getTitle())
+                .author(savedBook.getAuthor())
+                .isbn(savedBook.getIsbn())
+                .build();
     }
 
     public Page<BookResponse> getAllBooks(final Pageable pageable) {

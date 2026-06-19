@@ -70,12 +70,10 @@ class BorrowerControllerIT {
                         "john.doe@example.com"
                 );
 
-        mockMvc.perform(
-                        post("/v1/borrowers")
-                                .contentType(MediaType.APPLICATION_JSON)
-                                .content(
-                                        objectMapper.writeValueAsString(request)
-                                )
+        mockMvc.perform(post("/v1/borrowers")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(request)
+                        )
                 )
                 .andExpect(status().isConflict());
     }

@@ -1,7 +1,9 @@
 package io.ropereralk.github.library.dto.response;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Builder;
 
+@Builder
 @Schema(description = "Book details")
 public record BookResponse(
         @Schema(example = "Clean Architecture")

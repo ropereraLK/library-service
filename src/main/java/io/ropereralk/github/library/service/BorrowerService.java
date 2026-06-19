@@ -5,6 +5,7 @@ import io.ropereralk.github.library.dto.response.BorrowerResponse;
 import io.ropereralk.github.library.exception.DuplicateBorrowerException;
 import io.ropereralk.github.library.model.Borrower;
 import io.ropereralk.github.library.repository.BorrowerRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,7 @@ public class BorrowerService {
 
     private final BorrowerRepository borrowerRepository;
 
+    @Transactional
     public BorrowerResponse createBorrower(final BorrowerRequest borrowerRequest) {
         if (borrowerRepository.existsByEmail(
                 borrowerRequest.email())) {
