@@ -10,7 +10,7 @@
     </parent>
     <groupId>io.ropereralk.github</groupId>
     <artifactId>library-service</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name/>
     <description/>
     <url/>
