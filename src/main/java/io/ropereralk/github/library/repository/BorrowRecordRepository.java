@@ -12,6 +12,9 @@ import java.util.Optional;
 
 @Repository
 public interface BorrowRecordRepository extends JpaRepository<BorrowRecord, Long> {
+    /**
+     * Retrieves and locks a borrow record for update.
+     */
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     @Query("""
             select br
@@ -20,6 +23,11 @@ public interface BorrowRecordRepository extends JpaRepository<BorrowRecord, Long
             """)
     Optional<BorrowRecord> findByIdForUpdate(Long id);
 
+
+    /**
+     * Retrieves and locks the active borrow record
+     * associated with a book copy.
+     */
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     Optional<BorrowRecord> findByBookCopyIdAndStatus(
             Long bookCopyId,

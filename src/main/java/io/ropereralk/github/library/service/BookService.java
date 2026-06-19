@@ -23,6 +23,13 @@ public class BookService {
     private final BookRepository bookRepository;
     private final BookCopyService bookCopyService;
 
+    /**
+     * Creates a new book and its associated copies.
+     *
+     * @param bookRequest book details and number of copies to create
+     * @return created book details
+     * @throws DuplicateBookException if a book with the same ISBN already exists
+     */
     @Transactional
     public BookResponse createBook(final BookRequest bookRequest) {
 
@@ -39,8 +46,8 @@ public class BookService {
                         .build()
         );
 
-
-        bookCopyService.createBookCopies(createCopies(savedBook, bookRequest.noOfCopies()));
+        bookCopyService.createBookCopies(
+                createCopies(savedBook, bookRequest.noOfCopies()));
 
         return BookResponse.builder()
                 .title(savedBook.getTitle())
@@ -49,6 +56,12 @@ public class BookService {
                 .build();
     }
 
+    /**
+     * Retrieves a paginated list of books.
+     *
+     * @param pageable pagination information
+     * @return paginated book responses
+     */
     public Page<BookResponse> getAllBooks(final Pageable pageable) {
         return bookRepository.findAll(pageable)
                 .map(book -> new BookResponse(
@@ -58,10 +71,14 @@ public class BookService {
                 ));
     }
 
+    /**
+     * Creates the requested number of available copies for a book.
+     */
     private List<BookCopy> createCopies(
             Book book,
             int noOfCopies) {
 
+        // Generate sequential copy numbers starting from 1
         return IntStream.range(0, noOfCopies)
                 .mapToObj(i -> BookCopy.builder()
                         .book(book)

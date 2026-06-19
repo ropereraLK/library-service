@@ -27,6 +27,15 @@ public class BorrowService {
     private final BorrowerRepository borrowerRepository;
     private final BookCopyRepository bookCopyRepository;
 
+    /**
+     * Borrows an available book copy for a borrower.
+     *
+     * @param borrowRequest borrower and book copy details
+     * @return borrow transaction details
+     * @throws BorrowerNotFoundException    if the borrower does not exist
+     * @throws BookCopyNotFoundException    if the book copy does not exist
+     * @throws BookAlreadyBorrowedException if the book copy is unavailable
+     */
     @Transactional
     public BorrowResponse borrowBook(final BorrowRequest borrowRequest) {
 
@@ -36,6 +45,7 @@ public class BorrowService {
                         new BorrowerNotFoundException(
                                 "Borrower not found"));
 
+        // Lock the book copy record to prevent concurrent borrow requests
         BookCopy bookCopy = bookCopyRepository
                 .findByIdForUpdate(borrowRequest.bookCopyId())
                 .orElseThrow(() ->
@@ -58,8 +68,7 @@ public class BorrowService {
                                 .build()
                 );
 
-        return BorrowResponse.
-                builder()
+        return BorrowResponse.builder()
                 .borrowerId(borrower.getId())
                 .borrowerName(borrower.getName())
                 .bookCopyId(bookCopy.getId())
@@ -69,9 +78,15 @@ public class BorrowService {
                 .build();
     }
 
+    /**
+     * Returns a borrowed book copy and marks the borrow record as returned.
+     *
+     * @param request book return details
+     * @throws BorrowRecordNotFoundException if no active borrow record exists
+     * @throws BookAlreadyReturnedException  if the book copy is already available
+     */
     @Transactional
     public void returnBook(final ReturnRequest request) {
-
 
         BorrowRecord borrowRecord = borrowRecordRepository
                 .findByBookCopyIdAndStatus(
@@ -80,7 +95,7 @@ public class BorrowService {
                 .orElseThrow(() ->
                         new BorrowRecordNotFoundException(
                                 "No active borrow record found for book copy id: "
-                                        + request.bookCopyId().toString()));
+                                        + request.bookCopyId()));
 
         BookCopy bookCopy = borrowRecord.getBookCopy();
 
