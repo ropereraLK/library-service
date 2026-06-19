@@ -40,10 +40,6 @@ public class Book {
     @Column(nullable = false)
     private String author;
 
-    @Min(1)
-    @Column(nullable = false)
-    private Integer noOfCopies;
-
     @Version
     private Long version;
 

@@ -76,7 +76,6 @@ class BookControllerIT {
                         .title("Clean Code")
                         .author("Robert C. Martin")
                         .isbn("9780132350884")
-                        .noOfCopies(3)
                         .build()
         );
 
@@ -106,7 +105,6 @@ class BookControllerIT {
                         .title("Clean Code")
                         .author("Robert C. Martin")
                         .isbn("9780132350884")
-                        .noOfCopies(2)
                         .build()
         );
 

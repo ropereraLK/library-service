@@ -59,7 +59,7 @@ class BorrowControllerIT {
 
         Book book = bookRepository.save(
                 Book.builder().title("Clean Code").author("Robert Martin")
-                        .isbn("9780132350884").noOfCopies(1).build());
+                        .isbn("9780132350884").build());
 
         BookCopy bookCopy = bookCopyRepository.save(
                 BookCopy.builder().book(book).copyNumber(1)
@@ -85,7 +85,7 @@ class BorrowControllerIT {
 
         Book book = bookRepository.save(
                 Book.builder().title("Clean Code").author("Author")
-                        .isbn("ISBN-1").noOfCopies(1).build());
+                        .isbn("ISBN-1").build());
 
         BookCopy copy = bookCopyRepository.save(
                 BookCopy.builder().book(book).copyNumber(1)
@@ -121,7 +121,7 @@ class BorrowControllerIT {
 
         Book book = bookRepository.save(
                 Book.builder().title("Clean Code").author("Author")
-                        .isbn("ISBN-2").noOfCopies(1).build());
+                        .isbn("ISBN-2").build());
 
         BookCopy copy = bookCopyRepository.save(
                 BookCopy.builder().book(book).copyNumber(1)
@@ -140,7 +140,7 @@ class BorrowControllerIT {
 
         Book book = bookRepository.save(
                 Book.builder().title("Clean Code").author("Author")
-                        .isbn("ISBN-3").noOfCopies(1).build());
+                        .isbn("ISBN-3").build());
 
         BookCopy copy = bookCopyRepository.save(
                 BookCopy.builder().book(book).copyNumber(1)
@@ -185,7 +185,7 @@ class BorrowControllerIT {
 
         Book book = bookRepository.save(
                 Book.builder().title("Clean Code").author("Author")
-                        .isbn("ISBN-4").noOfCopies(1).build());
+                        .isbn("ISBN-4").build());
 
         BookCopy copy = bookCopyRepository.save(
                 BookCopy.builder().book(book).copyNumber(1)

@@ -22,7 +22,9 @@ JUnit 5
 Mockito
 JaCoCo
 Swagger / OpenAPI
+## Data Model
 
+![Data Model](docs/ErdDataModel.png)
 ## Running the Application
 
 Run the application using the local Spring profile:
@@ -32,7 +34,9 @@ Run the application using the local Spring profile:
 or
 
 mvn spring-boot:run -Dspring-boot.run.profiles=local
-API Documentation
+
+
+## API Documentation
 
 ### Swagger UI:
 
@@ -55,6 +59,9 @@ POST /v1/borrow/return
 
 Borrow and return book copies.
 
+### Swagger Sample view
+![Swagger Sample view ](docs/SwaggerDocumentation.png)
+
 ### Assumptions
 Each physical book copy has a unique identifier.
 Multiple copies of the same ISBN are supported.
@@ -70,6 +77,9 @@ mvn clean verify
 ### JaCoCo report:
 
 target/site/jacoco/index.html
+
+### JaCoCo  sample view
+![JaCoCo  sample view ](docs/UnitTestCoverage.png)
 
 Current coverage: approximately 96%.
 

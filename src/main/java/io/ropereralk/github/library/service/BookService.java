@@ -36,7 +36,7 @@ public class BookService {
                         .title(bookRequest.title())
                         .author(bookRequest.author())
                         .isbn(bookRequest.isbn())
-                        .noOfCopies(bookRequest.noOfCopies())
+//                        .noOfCopies(bookRequest.noOfCopies())
                         .build()
         );
 
